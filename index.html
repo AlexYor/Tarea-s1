@@ -6,88 +6,189 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Yorsh Alexander Flores</title>
   <style>
+   
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+      background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+      background-size: 300% 300%;
+      animation: gradientShift 20s ease infinite;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100dvh;
-      margin: 0;
-      background-image: url('https://media.istockphoto.com/id/1828398757/es/foto/editor-de-texto-del-desarrollador-o-programador-que-muestra-el-código-sql-en-el-monitor-de-la.jpg?s=612x612&w=0&k=20&c=f7rcrZew4-gjN-_eIosUCiOcmiM4IGt-7JubgvR0Y1Y=');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      font-family: monospace;
+      padding: 20px;
     }
 
+    
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://media.istockphoto.com/id/1828398757/es/foto/editor-de-texto-del-desarrollador-o-programador-que-muestra-el-código-sql-en-el-monitor-de-la.jpg?s=612x612&w=0&k=20&c=f7rcrZew4-gjN-_eIosUCiOcmiM4IGt-7JubgvR0Y1Y=')
+        center/cover no-repeat;
+      opacity: 0.15;
+      animation: zoomBg 25s ease-in-out infinite alternate;
+      z-index: -2;
+    }
+
+    
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.35);
+      z-index: -1;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    
+    @keyframes zoomBg {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.1);
+      }
+    }
+
+   
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+   
     main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      max-width: 360px;
-      padding: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 16px;
-      box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.5);
-      background-color: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(4px);
+      padding: 40px 20px;
+      max-width: 400px;
+      width: 100%;
       text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      animation: fadeInUp 1s ease forwards;
     }
 
+    main:hover {
+      transform: scale(1.02);
+      transition: transform 0.3s ease;
+    }
+
+   
     img {
-      width: 224px;
-      height: 224px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
+      border: 4px solid #23b5e8;
+      margin-bottom: 20px;
+      animation: rotateImg 10s linear infinite;
     }
 
+    @keyframes rotateImg {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    
     h1 {
-      font-size: 20px;
-      margin: 0;
+      font-size: 22px;
+      margin-bottom: 8px;
+      color: #fff;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
     }
 
     h2 {
       font-size: 16px;
-      color: silver;
-      margin: 0;
+      color: #ddd;
+      margin-bottom: 16px;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
     }
 
     p {
       font-size: 14px;
-      margin: 0;
+      color: #ccc;
+      margin-bottom: 24px;
+      line-height: 1.5;
     }
 
     ul {
-      padding: 0;
-      margin: 0;
       list-style: none;
+      margin-bottom: 20px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .badge {
-      padding: 4px 8px;
-      border-radius: 8px;
-      background-color: #23b5e8;
-      color: black;
-      font-weight: 700;
-      transition: box-shadow 0.25s, filter 0.25s;
+      background: #23b5e8;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.3s;
     }
 
     .badge:hover {
-      box-shadow: 0 2px 4px 0 #23b5e8;
-      filter: brightness(1.25);
+      background: #1a8ebd;
+      transform: scale(1.05);
+    }
+
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
     }
 
     .link {
-      color: white;
-      font-weight: 700;
-      transition: color 0.25s;
+      text-decoration: none;
+      color: #23b5e8;
+      font-weight: bold;
+      transition: color 0.3s, transform 0.3s;
     }
 
     .link:hover {
-      color: #23b5e8;
+      color: #1a8ebd;
+      transform: scale(1.1);
     }
   </style>
 </head>
@@ -107,17 +208,10 @@
       <li class="badge">🐘 MySQL</li>
       <li class="badge">🧠 Oracle</li>
     </ul>
-    <ul>
-      <li>
-        <a href="https://github.com/AlexYor" class="link" target="_blank">GitHub</a>
-      </li>
-      <li>
-        <a href="https://www.linkedin.com/in/yorshalexander/" class="link" target="_blank">LinkedIn</a>
-      </li>
-      <!-- <li>
-        <a href="https://www.instagram.com/tu_usuario" class="link" target="_blank">Instagram</a>
-      </li> -->
-    </ul>
+    <div class="links">
+      <a href="https://github.com/AlexYor" class="link" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/yorshalexander/" class="link" target="_blank">LinkedIn</a>
+    </div>
   </main>
 </body>
 
